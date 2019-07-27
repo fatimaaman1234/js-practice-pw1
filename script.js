@@ -97,6 +97,7 @@ let students = [
 for (let i = 0; i < students.length; i++) {
     console.log("Name: " + students[i].name + "\nGender: " + students[i].gender + "\nCity: " + students[i].address.city + "\nScore: " + students[i].admissionTestScore)
 }
+console.log("");
 
 // Print names of female students only.
 
@@ -105,6 +106,7 @@ for (let i = 0; i < students.length; i++) {
         console.log(students[i].name);
     }
 }
+console.log("");
 
 // Print names of male students only.
 
@@ -113,6 +115,7 @@ for (let i = 0; i < students.length; i++) {
         console.log(students[i].name);
     }
 }
+console.log("");
 
 // Print names of students who have passed the admission test. Passing marks are 50.
 
@@ -121,7 +124,7 @@ for (let i = 0; i < students.length; i++) {
         console.log(students[i].name)
     }
 }
-
+console.log("");
 
 // Print names of eligible students only (students who have internet and live in Karachi are eligible
 
@@ -130,6 +133,7 @@ for (let i = 0; i < students.length; i++) {
         console.log(students[i].name)
     }
 }
+console.log("");
 
 
 // Print address of each student in this format:
@@ -139,6 +143,7 @@ for (let i = 0; i < students.length; i++) {
 for (let i = 0; i < students.length; i++) {
     console.log(students[i].name + "'s address \n" + students[i].address.ilaqa + "in " + students[i].address.city + ", " + students[i].address.country);
 }
+console.log("");
 
 
 // Print names and phone number of students who have Ufone.
@@ -149,6 +154,7 @@ for (i = 0; i < students.length; i++) {
         console.log(students[i].name)
     }
 }
+console.log("");
 
 // Students who have a job or a class are placed in Group B. Print the names of students in Group A, and in Group B, in the below format:
 // Group A:  name1, name2
@@ -162,12 +168,36 @@ for (i = 0; i < students.length; i++) {
         console.log("Group B:" + students[i].name)
     }
 }
+console.log("");
 
 // Print age of each student in the below format:
 // Amna's age is 29 years
 
 for (i = 0; i < students.length; i++) {
-    let studentYear = students[i].dob;
-    let age = new Date().getFullYear() - new Date(studentYear).getFullYear();
-    console.log(students[i].name + "'s age is " + age + "years")
+    let today = new Date();
+    let birthDate = students[i].dob;
+    let age = today.getFullYear() - birthDate.getFullYear();
+    if (birthDate.getMonth() > today.getMonth()) {
+        age--;
+    } else if (birthDate.getMonth() == today.getMonth()) {
+        if (birthDate.getDate() > today.getDate()) {
+            age--;
+        }
+    }
+    console.log(`${students[i].name}'s age is ${age} years`)
 }
+
+console.log("");
+
+// Print the name of the oldest student
+
+
+let oldestStudent = students[0];
+for (i = 1; i < students.length; i++) {
+    if (students[i].age > oldestStudent.age) {
+        oldestStudent = students[i];
+    }
+    console.log(oldestStudent.name + " is the oldest student.");
+}
+
+console.log("");
